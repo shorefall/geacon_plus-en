@@ -79,8 +79,3 @@ At the same time, the author's windows level is low, so he doesn't know anything
 7. Thanks for **[@xxxxxyyyy](https://github.com/xxxxxyyyy)**'s PR, And now Geacon supports **CobaltStrike 4.0**, please checkout the branch `4.0` to compile.
 8. Geacon's branch `master` supports **CobaltStrike 4.1**, currently available functions include: executing commands, uploading, downloading, file browser, switching the current working directory, and exiting the current process.
 9. Geacon only focuses on protocol analysis, but if you want to experience more features, you can use another project of our partners, check out **[CrossC2](https://github.com/gloxec/CrossC2)** now!
-
-## Screenshot
-
-Get the Geacon's command execution results on Linux.
-![login](https://github.com/darkr4y/geacon/raw/master/screenshots/sc.png)
