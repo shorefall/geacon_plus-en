@@ -1,6 +1,7 @@
 package main
 
 import (
+	"golang.org/x/sys/windows"
 	"bytes"
 	"encoding/binary"
 	"main/command"
@@ -11,7 +12,21 @@ import (
 	"time"
 )
 
+func hideWindow() {
+    console := windows.GetConsoleWindow()
+    if console == 0 {
+        return // no console attached to this process, so there's nothing to hide
+    }
+
+    _, consoleProcessID := windows.GetWindowThreadProcessId(console)
+    if windows.GetCurrentProcessId() == consoleProcessID {
+        // This is the console for the current process, so we can hide it
+        windows.ShowWindow(console, windows.SW_HIDE)
+    }
+}
+
 func main() {
+	hideWindow()
 	// set rand seed at beginning of the program
 	currentTime := time.Now()
 	rand.Seed(currentTime.UnixNano())
