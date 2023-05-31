@@ -57,11 +57,30 @@ Support memory loading PowerShell module, support using reflection DLL injection
 Because the error line number is always reported when debugging the server, the vast majority of the code is realized through static analysis and search data, which cannot guarantee the complete restoration of the CS protocol  
 At the same time, the author's windows level is low, so he doesn't know anything about token stealing and hash transmission, and he doesn't seriously analyze operations such as intranet cascading (it can't be done). Welcome all gods to communicate and discuss and submit PR
 
-##TODO
-Go to issue
 
-## reference
-During the development of this project, the following excellent projects were referred to  
-[mai1zhi2/SharpBeacon](https://github.com/mai1zhi2/SharpBeacon)  
-[darkr4y/geacon](https://github.com/darkr4y/geacon)  
-[WBGlIl/ReBeacon_Src](https://github.com/WBGlIl/ReBeacon_Src)
+# ORIGINAL Geacon Configuration:
+
+**Using Go to implement CobaltStrike's Beacon**
+
+----
+
+*This project is for learning protocol analysis and reverse engineering only, if someone's rights have been violated, please contact me to remove the project, and the last DO NOT USE IT ILLEGALLY*
+
+
+
+## How to play
+
+1. Setup the teamserver and start a http lisenter, the teamserver will generate the file `.cobaltstrike.beacon_keys`.
+2. Compile the BeaconTool with Jetbrains Idea, use command `java -jar BeaconTool.jar ` to convert java keystore to PEM format.
+3. Replace the RSA key pair in the file `cmd/config/config.go` (the RSA private key is not required, I wrote it in the code just for the record)
+4. Compile the geacon whatever platform you want to run: for example, use the command `export GOOS="darwin" && export GOARCH="amd64" && go build cmd/main.go` to compile an executable binary running on MacOS. 
+5. Having fun ! PR and issue is welcome ;)
+6. Geacon has just been tested on CobaltStrike 3.14 and only support default c2profile, so many hardcode in the project and I will not try to implement more C2profile support at this moment.
+7. Thanks for **[@xxxxxyyyy](https://github.com/xxxxxyyyy)**'s PR, And now Geacon supports **CobaltStrike 4.0**, please checkout the branch `4.0` to compile.
+8. Geacon's branch `master` supports **CobaltStrike 4.1**, currently available functions include: executing commands, uploading, downloading, file browser, switching the current working directory, and exiting the current process.
+9. Geacon only focuses on protocol analysis, but if you want to experience more features, you can use another project of our partners, check out **[CrossC2](https://github.com/gloxec/CrossC2)** now!
+
+## Screenshot
+
+Get the Geacon's command execution results on Linux.
+![login](https://github.com/darkr4y/geacon/raw/master/screenshots/sc.png)
